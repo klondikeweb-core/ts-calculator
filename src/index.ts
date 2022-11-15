@@ -1,7 +1,8 @@
-import type { CalculatorInterface, CalculatorKeys, CalculatorKeyEvent, CalculatorKeyHandler } from "./calculator";
-import Calculator from "./calculator";
+import type { CalculatorInterface, CalculatorKeyEvent, CalculatorKeyHandler } from "./calculator";
+import Calculator, { CalculatorKeys } from "./calculator";
 
-export type { CalculatorInterface, CalculatorKeys, CalculatorKeyEvent, CalculatorKeyHandler }
+export type { CalculatorInterface, CalculatorKeyEvent, CalculatorKeyHandler }
 export { 
-    Calculator
+    Calculator,
+    CalculatorKeys
 }
