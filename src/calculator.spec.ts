@@ -264,4 +264,22 @@ describe('Calculator', () => {
             expect(calc.value).toEqual(4);
         })
     })
+
+    describe('backspace operation', () => {
+        const calc = new Calculator();
+        
+        const backspaceKey = calc.addKey(CalculatorKeys.Backspace);
+        const numKey1 = calc.addKey(CalculatorKeys.Number1);
+
+        numKey1.click();
+        numKey1.click();
+        numKey1.click();
+        
+        expect(calc.display).toEqual("111");
+
+        backspaceKey.click();
+        
+        expect(calc.display).toEqual("11");
+
+    })
 })

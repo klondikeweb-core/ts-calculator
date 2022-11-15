@@ -14,7 +14,8 @@ export enum CalculatorKeys {
     Substract = "-",
     Multiply = "*",
     Divide = "/",
-    Enter = "_"
+    Enter = "_",
+    Backspace = "<"
 }
 
 export type CalculatorOperationKey = 
@@ -22,7 +23,8 @@ export type CalculatorOperationKey =
     | CalculatorKeys.Substract
     | CalculatorKeys.Divide
     | CalculatorKeys.Multiply
-    | CalculatorKeys.Enter;
+    | CalculatorKeys.Enter
+    | CalculatorKeys.Backspace;
 
 export class CalculatorKeyEvent extends CustomEvent<{
     key: CalculatorKeys
@@ -120,7 +122,9 @@ class Calculator implements CalculatorInterface {
 
         const operate = () => {
             if (this._lastKey === key || !isOperationKey(key)) { return; }
-            setLastKey(key);
+            if (key !== CalculatorKeys.Backspace) {            
+                setLastKey(key);
+            }
             this._lastOp = key;
             this.applyOperation(key);
             this._subscribers.forEach(sub => sub(key, this.display, this.value));
@@ -176,6 +180,7 @@ class Calculator implements CalculatorInterface {
                     case CalculatorKeys.Substract:
                     case CalculatorKeys.Divide:
                     case CalculatorKeys.Multiply:
+                    case CalculatorKeys.Backspace:
                         operate();
                         break;
                     case CalculatorKeys.Enter:
@@ -240,6 +245,14 @@ class Calculator implements CalculatorInterface {
     private applyOperation(key: CalculatorKeys) {
 
         if (isOperationKey(key)) {
+
+            if (key === CalculatorKeys.Backspace) {
+                if (this._currentValue.length > 0) {
+                    this._currentValue = this._currentValue.slice(0, this._currentValue.length - 1);
+                }
+                return;
+            }
+
             this._buffer.push(parseFloat(this.display));
             this._operations.push(key);
             // reset the display
