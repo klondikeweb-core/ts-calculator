@@ -1,7 +1,7 @@
 {
   "name": "@klondikeweb.core/ts-calculator",
   "description": "A typescript calculator class",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "dist/index.js",
   "module": "src/index.ts",
   "typings": "dist/index.d.ts",
@@ -15,7 +15,8 @@
   },
   "scripts": {
     "build": "tsc",
-    "test": "jest"
+    "test": "jest",
+    "prepublish": "npm run build"
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^9.0.2",
