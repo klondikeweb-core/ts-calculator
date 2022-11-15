@@ -251,6 +251,11 @@ class Calculator implements CalculatorInterface {
 
         throw new Error(`Invalid operation: '${key}'`);
     }
+
+    static get Keys() {
+        return CalculatorKeys;
+    }
 }
+
 
 export default Calculator;

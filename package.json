@@ -1,7 +1,7 @@
 {
   "name": "@klondikeweb.core/ts-calculator",
   "description": "A typescript calculator class",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "dist/index.js",
   "module": "src/index.ts",
   "typings": "dist/index.d.ts",

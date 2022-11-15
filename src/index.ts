@@ -2,6 +2,7 @@ import type { CalculatorInterface, CalculatorKeyEvent, CalculatorKeyHandler } fr
 import Calculator, { CalculatorKeys } from "./calculator";
 
 export type { CalculatorInterface, CalculatorKeyEvent, CalculatorKeyHandler }
+
 export { 
     Calculator,
     CalculatorKeys
